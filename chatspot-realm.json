@@ -1,0 +1,120 @@
+{
+  "realm": "chatspot-chatapp",
+  "enabled": true,
+  "clients": [
+    {
+      "clientId": "chatapp-client",
+      "name": "ChatApp Client",
+      "secret": "aSuperSecretValue",
+      "publicClient": false,
+      "serviceAccountsEnabled": true,
+      "directAccessGrantsEnabled": true,
+      "standardFlowEnabled": true,
+      "rootUrl": "http://localhost",
+      "redirectUris": ["http://localhost/*"],
+      "adminUrl": "http://localhost/* ",
+      "webOrigins": ["*"],
+      "protocol": "openid-connect"
+    }
+  ],
+  "users": [
+    {
+      "username": "testuser",
+      "email": "testuser@example.com",
+      "firstName": "test",
+      "lastName": "user",
+      "emailVerified": true,
+      "enabled": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["user"]
+    },
+    {
+      "username": "navin",
+      "email": "navin@example.com",
+      "firstName": "navin",
+      "lastName": "kumar",
+      "emailVerified": true,
+      "enabled": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["user"]
+    },
+    {
+      "username": "pravin",
+      "email": "pravin@example.com",
+      "firstName": "pravin",
+      "lastName": "kumar",
+      "emailVerified": true,
+      "enabled": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["user"]
+    },
+    {
+      "username": "vignesh",
+      "email": "vignesh@example.com",
+      "firstName": "vignesh",
+      "lastName": "balaji",
+      "emailVerified": true,
+      "enabled": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["user"]
+    },
+    {
+      "username": "ramesh",
+      "email": "ramesh@example.com",
+      "firstName": "ramesh",
+      "lastName": "balaji",
+      "emailVerified": true,
+      "enabled": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["user"]
+    }
+  ],
+  "roles": {
+    "realm": [
+      {
+        "name": "user",
+        "description": "Default user role",
+        "composite": false,
+        "clientRole": false,
+        "containerId": "chatspot-chatapp"
+      },
+      {
+        "name": "admin",
+        "description": "Administrator role",
+        "composite": false,
+        "clientRole": false,
+        "containerId": "chatspot-chatapp"
+      }
+    ]
+  }
+}

@@ -1,0 +1,88 @@
+spring:
+  application:
+    name: chatapp
+  
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:chatapp}
+    username: ${DB_USERNAME:admin}
+    password: ${DB_PASSWORD:password}
+  
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  
+  flyway:
+    enabled: false
+  
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${KEYCLOAK_ISSUER_URI:http://localhost:9090/realms/chatspot-chatapp}
+  
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
+    producer:
+      bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
+      group-id: chatapp-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: "*"
+    admin:
+      properties:
+        bootstrap.servers: ${KAFKA_BOOTSTRAP_SERVERS}
+      auto-create: true
+
+application:
+  media:
+    picture:
+      output-path: ${MEDIA_PICTURE_PATH:./root/picture}
+    video:
+      output-path: ${MEDIA_VIDEO_PATH:./root/video}
+    profile:
+      output-path: ${MEDIA_PROFILE_PATH:./root/profile}
+
+kafka:
+  chat:
+    topic:
+      name: chat-messages
+  delivery:
+    topic:
+      name: delivery-status
+  message:
+    topic:
+      name: message-reactions
+
+
+logging:
+  level:
+    com.chatspot.chatapp: ${LOG_LEVEL:INFO}
+    org.springframework.kafka: ${LOG_LEVEL:INFO}
+    org.springframework.security: DEBUG
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
