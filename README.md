@@ -190,18 +190,6 @@ docker-compose up -d postgres keycloak kafka kafka-ui
 
 ---
 
-## Production Deployment
-
-To deploy this backend in production:
-
-* Use cloud services for PostgreSQL and Kafka (e.g., RDS, MSK)
-* Secure JWT with HTTPS and proper DNS for Keycloak
-* Add reverse proxy (Nginx, Traefik) with SSL certs
-* Setup health monitoring (e.g., Actuator + Prometheus)
-* Enable distributed logging (e.g., ELK, Grafana)
-
----
-
 ## Useful Docker Commands
 
 ```bash
